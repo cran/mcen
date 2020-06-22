@@ -10,25 +10,28 @@
 #'@importFrom stats coefficients
 #'@author Ben Sherwood <ben.sherwood@@ku.edu>, Brad Price <brad.price@@mail.wvu.edu>        
 mcen.init <- function(x,y,family="mgaussian",delta=NULL,gamma_y=1,intercept=FALSE){
-	if(length(delta) > 1 | length(gamma_y) > 1){
-		stop('initialization only for single delta, gamma_y')
-	}
-	r <- dim(y)[2]
-	n <- dim(y)[1]
-	p <- dim(x)[2]
-	if(family=="mgaussian"){
-		init_family = "gaussian"
-	}
-	if(family=="mbinomial"){
-	  init_family="binomial"
-    intercept = TRUE #force an intercept if binomial is used. 
-	}
-	init_model <- apply(y,2,glmnet,family=init_family,x=x,alpha=delta/(delta+gamma_y),lambda=(delta+gamma_y)/(2*n))
-	if(intercept){
-		do.call(cbind,lapply(init_model,coefficients))
-	} else{
-		do.call(cbind,lapply(init_model,coefficients))[-1,]
-	}
+    if(length(delta) > 1 | length(gamma_y) > 1){
+        stop('initialization only for single delta, gamma_y')
+    }
+    r <- dim(y)[2]
+    n <- dim(y)[1]
+    p <- dim(x)[2]
+    if(family=="mgaussian"){
+        init_family = "gaussian"
+        intercept_b=intercept
+    }
+    if(family=="mbinomial"){
+      init_family="binomial"
+      intercept_b=TRUE
+      x=x[,-1]
+      ## probably need to force the intercept here to?
+    }
+    init_model <- apply(y,2,glmnet,family=init_family,x=x,alpha=delta/(delta+gamma_y),lambda=(delta+gamma_y)/(2*n),intercept=intercept_b)
+    if(intercept_b){
+        do.call(cbind,lapply(init_model,coefficients))
+    } else{
+        do.call(cbind,lapply(init_model,coefficients))[-1,]
+    }
 }
 
 #' Fits an MCEN model 
@@ -66,7 +69,7 @@ mcen.init <- function(x,y,family="mgaussian",delta=NULL,gamma_y=1,intercept=FALS
 #'@export
 #'@importFrom stats cov
 
-mcen <- function(x,y,family="mgaussian",ky=NULL,delta=NULL,gamma_y=1,ndelta=25,delta.min.ratio = ifelse(n < p, 0.01, 1e-04),
+mcen <- function(x,y,family="mgaussian",ky=NULL,delta=NULL,gamma_y=1,ndelta=25,delta.min.ratio = NULL,
 						eps=.00001,scale_x=TRUE, scale_y=TRUE, clusterMethod="kmeans",clusterStartNum=30,clusterIterations=10,cluster_y=NULL,
 						max_iter=10,init_beta=NULL, n.cores=1){  
   if(is.null(cluster_y)==FALSE){
@@ -91,6 +94,9 @@ mcen <- function(x,y,family="mgaussian",ky=NULL,delta=NULL,gamma_y=1,ndelta=25,d
   p=dim(x)[2]
   r=dim(y)[2]
   n=dim(x)[1]
+   if(is.null(delta.min.ratio)==TRUE){
+    delta.min.ratio=ifelse(n < p, 0.01, 1e-04)
+  }
   if(family=="mgaussian"){
   Cxy=cov(x,y)*(n-1)
   Cxx=cov(x)*(n-1)

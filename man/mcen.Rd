@@ -5,7 +5,7 @@
 \title{Fits an MCEN model}
 \usage{
 mcen(x, y, family = "mgaussian", ky = NULL, delta = NULL, gamma_y = 1,
-  ndelta = 25, delta.min.ratio = ifelse(n < p, 0.01, 1e-04), eps = 1e-05,
+  ndelta = 25, delta.min.ratio = NULL, eps = 1e-05,
   scale_x = TRUE, scale_y = TRUE, clusterMethod = "kmeans",
   clusterStartNum = 30, clusterIterations = 10, cluster_y = NULL,
   max_iter = 10, init_beta = NULL, n.cores = 1)
