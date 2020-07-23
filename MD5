@@ -1,8 +1,8 @@
-01c420080be420a2b804e0de47f06a72 *DESCRIPTION
+70e469b7a2f19422b0d9909a0ff82b99 *DESCRIPTION
 065cbde38330487f3c4196379cfa85dc *LICENSE
 1978df144cdbe1421b8cbc970995ac6a *NAMESPACE
-d41d8cd98f00b204e9800998ecf8427e *NEWS
-1205270363f9392543a021e79adcdca9 *R/mcen.r
+c537cb5ffd8e65601c2f50f36d1f974e *NEWS
+597fd5299f2a2c938ac5e6ea005898f7 *R/mcen.r
 266ac95a5f9671d9a9f0e2df92382f7d *man/CalcHorseBin.Rd
 8ae6b2b540eb391176e8cc9d6c7dc4a7 *man/CalcHorseEBin.Rd
 fc7b8d3d45a433c06ad79d637b04f77a *man/SetEq.Rd
@@ -13,7 +13,7 @@ fc7b8d3d45a433c06ad79d637b04f77a *man/SetEq.Rd
 aaed9d320ae987eb58979e8f16f56ce1 *man/cluster.vals.Rd
 4bd64eea40957b0398a50f8aabe8d01e *man/coef.cv.mcen.Rd
 5099c9fa2a8ec6f6e3df33dbb008bcf3 *man/coef.mcen.Rd
-9db4f89e37fb3779e89fa6f19fa6c2e5 *man/cv.mcen.Rd
+3f52ac98d22ed0be6ddc4c15caea22df *man/cv.mcen.Rd
 51718f7725ab69aa5f6afb3fcf29b99b *man/get_best_cvm.Rd
 d4119ca98d0519360d6a7bcb3eabfabb *man/matrix_multiply.Rd
 89004524ee5d785a82faefbcf9d3c995 *man/mcen.Rd

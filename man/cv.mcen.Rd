@@ -5,7 +5,7 @@
 \title{Cross validation for mcen function}
 \usage{
 cv.mcen(x, y, family = "mgaussian", ky = seq(2, 4), gamma_y = seq(0.1,
-  5.1, 0.5), nfolds = 10, folds = NULL, cluster_y = NULL, n.cores = 1,
+  5.1, 0.5), nfolds = 10, folds = NULL, cluster_y = NULL, delta=NULL, n.cores = 1,
   ...)
 }
 \arguments{
@@ -24,6 +24,7 @@ cv.mcen(x, y, family = "mgaussian", ky = seq(2, 4), gamma_y = seq(0.1,
 \item{folds}{A vector of length n, where this identifies what fold of the kfold cross validation each observation belongs to.}
 
 \item{cluster_y}{a priori definition of clusters. If clusters are provided they will remain fixed and are not estimated. Objective function is then convex.}
+\item{delta}{Tuning parameter for the L1 penalty}
 
 \item{n.cores}{Number of cores used for parallel processing.}
 

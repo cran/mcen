@@ -1,8 +1,8 @@
 Package: mcen
 Type: Package
 Title: Multivariate Cluster Elastic Net
-Version: 1.1
-Date: 2020-06-18
+Version: 1.2
+Date: 2020-07-22
 Author: Ben Sherwood [aut, cre], Brad Price [aut] 
 Depends: R (>= 3.0.0), glmnet, flexclust, Matrix, parallel, faraway,
         methods, stats
@@ -12,6 +12,6 @@ ByteCompile: TRUE
 License: MIT + file LICENSE
 RoxygenNote: 6.0.1
 NeedsCompilation: yes
-Packaged: 2020-06-22 19:10:01 UTC; brad
+Packaged: 2020-07-22 22:39:40 UTC; b157s966
 Repository: CRAN
-Date/Publication: 2020-06-22 20:10:03 UTC
+Date/Publication: 2020-07-23 14:30:03 UTC

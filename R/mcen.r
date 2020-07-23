@@ -462,7 +462,7 @@ pred_eval.mbinom_mcen<-function(obj,test_x,test_y){
 #'@author Ben Sherwood <ben.sherwood@@ku.edu>, Brad Price <brad.price@@mail.wvu.edu> 
 #'@export
 #'@importFrom parallel mclapply
-cv.mcen <-function(x,y,family="mgaussian",ky=seq(2,4),gamma_y=seq(.1,5.1,.5),nfolds=10,folds=NULL,cluster_y=NULL, n.cores=1,...){
+cv.mcen <-function(x,y,family="mgaussian",ky=seq(2,4),gamma_y=seq(.1,5.1,.5),nfolds=10,folds=NULL,cluster_y=NULL,delta=NULL, n.cores=1,...){
 
   
   if(is.null(cluster_y)==FALSE){
@@ -516,7 +516,7 @@ cv.mcen <-function(x,y,family="mgaussian",ky=seq(2,4),gamma_y=seq(.1,5.1,.5),nfo
 			k_gamma_results <- NULL
 			for(g in 1:gamma_yl){
 				#print(paste0("working on k ", k, " and g ", g))
-				mcen_full <- mcen(x,y,family,ky=ky[k], gamma_y=gamma_y[g],cluster_y=cluster_y)
+				mcen_full <- mcen(x,y,family,ky=ky[k], gamma_y=gamma_y[g],cluster_y=cluster_y,delta=delta,...)
 				mcen_list[[mcen_num]] <- mcen_full
 				train_delta <- mcen_full$delta
 				eval_results <- Eval(train_delta,gamma_y[g],ky[k],fam=family,...)

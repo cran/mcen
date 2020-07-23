@@ -1,0 +1,16 @@
+mcen 1.2 (Release date: 2020-07-22)
+==============
+Changes:
+
+* Fixed cv.mcen() bug that did not allow delta values to be passed to that function. 
+
+mcen 1.1 (Release date: 2015-06-22)
+==============
+
+Changes:
+
+* Fixed bug that did not allow cv.mcen to work properly with family="mbinomial"
+
+
+mcen 1.0 (Release date: 2018-06-15)
+==============
